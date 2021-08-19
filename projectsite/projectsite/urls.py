@@ -16,10 +16,17 @@ Including another URLconf
 import debug_toolbar
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from landingpage.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
+    path('', HomePageView.as_view(), name='home'),
+
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
