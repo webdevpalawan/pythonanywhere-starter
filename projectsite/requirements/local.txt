@@ -1,0 +1,5 @@
+-r base.txt
+#write all testing modules here
+django-debug-toolbar
+factory-boy
+fake-factory
