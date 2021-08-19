@@ -16,7 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DJANGO_MODE = os.getenv('DJANGO_MODE', 'local').lower()
+DJANGO_MODE = os.getenv('DJANGO_MODE', 'production').lower()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -27,7 +27,8 @@ if DJANGO_MODE == 'local':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +47,6 @@ if DJANGO_MODE == 'local':
     INSTALLED_APPS += [
         'debug_toolbar',
     ]
-# import pdb;pdb.set_trace()
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+#import pdb;pdb.set_trace()
 
 if DJANGO_MODE == 'local':
     MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
@@ -141,7 +142,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    # BASE_DIR / 'projectsite' / 'static',    
+    BASE_DIR / 'projectsite' / 'static',    
     BASE_DIR / 'static',
 )
 
