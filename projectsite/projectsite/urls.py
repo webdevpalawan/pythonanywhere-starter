@@ -22,11 +22,14 @@ from landingpage.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('__debug__/', include(debug_toolbar.urls)),
     path('', HomePageView.as_view(), name='home'),
 
 ]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DJANGO_MODE == 'local':
+    import debug_toolbar
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
