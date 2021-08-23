@@ -4,7 +4,7 @@ attrs==21.2.0
 Bext==0.0.6
 colorama==0.4.4
 Django==3.2.6
-django-dotenv==1.4.2
+python-dotenv
 iniconfig==1.1.1
 packaging==20.9
 pluggy==0.13.1
